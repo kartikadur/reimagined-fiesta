@@ -25,14 +25,12 @@ test("should return correct value when lower numeral precedes higher numeral", (
 })
 
 test("should return correct values for non multples of 5", () => {
-  expect(arabicToRoman(4)).toBe("IV");
-  expect(arabicToRoman(9)).toBe("IX");
-  expect(arabicToRoman(40)).toBe("XL");
-  expect(arabicToRoman(90)).toBe("XC");
-  expect(arabicToRoman(400)).toBe("CD");
-  expect(arabicToRoman(900)).toBe("CM");
+  expect(arabicToRoman(456)).toBe("CDLVI");
+  expect(arabicToRoman(99)).toBe("XCIX");
+  expect(arabicToRoman(988)).toBe("CMLXXXVIII");
   expect(arabicToRoman(104)).toBe("CIV");
   expect(arabicToRoman(1409)).toBe("MCDIX");
-  expect(arabicToRoman(42)).toBe("XLII");
+  expect(arabicToRoman(1904)).toBe("MCMIV");
+  expect(arabicToRoman(3649)).toBe("MMMDCXLIX");
 })
 
