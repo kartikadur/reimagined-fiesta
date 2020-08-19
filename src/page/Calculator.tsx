@@ -3,6 +3,8 @@ import { Display } from "../components/Display";
 import { Button } from "../components/Button";
 import { useCalcState } from "../hooks/useCalcState";
 
+import "./Calculator.scss";
+
 export const Calculator: FC = (): ReactElement => {
   const [value, setValue] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
@@ -101,13 +103,13 @@ export const Calculator: FC = (): ReactElement => {
         cx="calc__btn  btn__mul"
         onClick={() => {
           if (hasSign(value)) {
-            calculateNewValue(value, "*");
+            calculateNewValue(value, "×");
           } else if (value && !error) {
-            setValue((value) => value + "*");
+            setValue((value) => value + "×");
           }
         }}
       >
-        *
+        ×
       </Button>
       <Button
         cx="calc__btn  btn__eq"
@@ -127,7 +129,6 @@ export const Calculator: FC = (): ReactElement => {
       >
         Cl
       </Button>
-      {JSON.stringify(value, null, 2)}
     </div>
   );
 };

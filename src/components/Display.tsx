@@ -7,11 +7,7 @@ type DisplayType = {
 
 export const Display: FC<DisplayType> = ({ value, cx }): ReactElement => {
   return (
-    <div
-      className={cx}
-      data-testid="display"
-      style={{ height: "48px", border: "1px solid #f5f5f6" }}
-    >
+    <div className={cx} data-testid="display">
       {value}
     </div>
   );

@@ -16,14 +16,14 @@ export const useCalcState = ({
 
   //check if the user has already pressed an operation button before
   const hasSign = (value: string) => {
-    return /[+\-*]/.test(value);
+    return /[+\-×]/.test(value);
   };
 
   const calculateNewValue = (value: string, sign: string) => {
     let num1 = "",
       num2 = "";
-    if (value.includes("*")) {
-      [num1, num2] = value.split("*");
+    if (value.includes("×")) {
+      [num1, num2] = value.split("×");
       if (num1 && num2) {
         setValue(mul(num1, num2) + sign);
       }

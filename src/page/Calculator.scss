@@ -1,0 +1,50 @@
+/*
+UI Design credit Patricia Pascual https://dribbble.com/shots/3467471-DailyUI-004-Calculator
+*/
+.calc {
+  margin: 1.5rem auto;
+  height: 50rem;
+  width: 35rem;
+  border-radius: 1.5rem;
+  background-image: linear-gradient(#505050, #363636);
+  display: grid;
+  padding: 8rem 2rem 1.5rem;
+  grid-template-rows: auto 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  box-shadow: 0 0 16px 8px rgba(0, 0, 0, 0.1), 0 0 8px 2px rgba(0, 0, 0, 0.3);
+
+  &__disp {
+    border-bottom: 0.15rem solid #5d5d5d;
+    padding: 2rem;
+    grid-column: 1/4;
+    font-size: 5rem;
+    color: #fff;
+    height: 6rem;
+    margin: 0 2rem 0.5rem;
+    text-align: right;
+  }
+
+  &__btn {
+    font-size: 2rem;
+    background: transparent;
+    border: none;
+    border-radius: 3px;
+    color: #d7d7d7;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      box-shadow: 0 0 16px 8px rgba(0, 0, 0, 0.1),
+        0 0 8px 2px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.btn {
+  &__mul,
+  &__sub,
+  &__add,
+  &__eq,
+  &__cl {
+    color: #f36c6c;
+  }
+}
