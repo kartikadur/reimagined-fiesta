@@ -20,9 +20,9 @@ test("D - L", () => {
 })
 
 test("DC - M", () => {
-  expect(sub('DC', 'M')).toBe('Cannot compute')
+  expect(sub('DC', 'M')).toBe(false)
 })
 
 test("I - I", () => {
-  expect(sub('I', 'I')).toBe('Cannot compute')
+  expect(sub('I', 'I')).toBe(false)
 })

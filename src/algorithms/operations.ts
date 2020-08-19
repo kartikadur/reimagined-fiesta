@@ -5,7 +5,7 @@ export const add = (num1: string, num2: string) => {
 }
 
 export const sub = (num1: string, num2: string) => {
-  return gt(num1, num2) ? arabicToRoman(romanToArabic(num1) - romanToArabic(num2)) : 'Cannot compute'
+  return gt(num1, num2) ? arabicToRoman(romanToArabic(num1) - romanToArabic(num2)) : false;
 }
 
 export const mul = (num1: string, num2: string) => {
