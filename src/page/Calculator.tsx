@@ -4,12 +4,14 @@ import { Button } from "../components/Button";
 import { useCalcState } from "../hooks/useCalcState";
 
 import "./Calculator.scss";
+import { Loader } from "../components/Loader";
 
 export const Calculator: FC = (): ReactElement => {
   const [value, setValue] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
 
-  const { hasSign, setNewValue, calculateNewValue } = useCalcState({
+  const { hasSign, setNewValue, calculateNewValue, loading } = useCalcState({
+    val: value,
     error,
     setValue,
     setError,
@@ -17,6 +19,7 @@ export const Calculator: FC = (): ReactElement => {
 
   return (
     <div className="calc">
+      <Loader isLoading={loading} />
       <Display cx="calc__disp" value={value} />
 
       <Button
@@ -36,6 +39,18 @@ export const Calculator: FC = (): ReactElement => {
         V
       </Button>
       <Button
+        cx="calc__btn  btn__add"
+        onClick={() => {
+          if (hasSign(value)) {
+            calculateNewValue(value, "+");
+          } else if (value && !error) {
+            setValue((value) => value + "+");
+          }
+        }}
+      >
+        +
+      </Button>
+      <Button
         cx="calc__btn btn__x"
         onClick={() => {
           setNewValue("X");
@@ -50,6 +65,18 @@ export const Calculator: FC = (): ReactElement => {
         }}
       >
         L
+      </Button>
+      <Button
+        cx="calc__btn  btn__sub"
+        onClick={() => {
+          if (hasSign(value)) {
+            calculateNewValue(value, "-");
+          } else if (value && !error) {
+            setValue((value) => value + "-");
+          }
+        }}
+      >
+        -
       </Button>
       <Button
         cx="calc__btn  btn__c"
@@ -68,38 +95,6 @@ export const Calculator: FC = (): ReactElement => {
         D
       </Button>
       <Button
-        cx="calc__btn  btn__m"
-        onClick={() => {
-          setNewValue("M");
-        }}
-      >
-        M
-      </Button>
-      <Button
-        cx="calc__btn  btn__add"
-        onClick={() => {
-          if (hasSign(value)) {
-            calculateNewValue(value, "+");
-          } else if (value && !error) {
-            setValue((value) => value + "+");
-          }
-        }}
-      >
-        +
-      </Button>
-      <Button
-        cx="calc__btn  btn__sub"
-        onClick={() => {
-          if (hasSign(value)) {
-            calculateNewValue(value, "-");
-          } else if (value && !error) {
-            setValue((value) => value + "-");
-          }
-        }}
-      >
-        -
-      </Button>
-      <Button
         cx="calc__btn  btn__mul"
         onClick={() => {
           if (hasSign(value)) {
@@ -112,6 +107,23 @@ export const Calculator: FC = (): ReactElement => {
         ×
       </Button>
       <Button
+        cx="calc__btn  btn__m"
+        onClick={() => {
+          setNewValue("M");
+        }}
+      >
+        M
+      </Button>
+      <Button
+        cx="calc__btn  btn__cl"
+        onClick={() => {
+          setValue("");
+          setError(false);
+        }}
+      >
+        Cl
+      </Button>
+      <Button
         cx="calc__btn  btn__eq"
         onClick={() => {
           if (hasSign(value)) {
@@ -120,14 +132,6 @@ export const Calculator: FC = (): ReactElement => {
         }}
       >
         =
-      </Button>
-      <Button
-        cx="calc__btn  btn__cl"
-        onClick={() => {
-          setValue("");
-        }}
-      >
-        Cl
       </Button>
     </div>
   );
